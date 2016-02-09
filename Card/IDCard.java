@@ -14,4 +14,19 @@ public class IDCard extends Card
    {
       return "Card holder: " + name + " ID Number: " + idNumber;
    }
+   
+   public String getName()
+   {
+       return name;
+   }
+   
+   public String getIDNumber()
+   {
+       return idNumber;
+   }
+   
+   public boolean equals(IDCard card)
+   {
+       return name.equals(card.getName()) && idNumber.equals(card.getIDNumber());
+   }
 }

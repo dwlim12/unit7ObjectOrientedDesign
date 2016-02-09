@@ -26,4 +26,16 @@ public class Card
    {
       return "Card holder: " + name;
    }
+   
+   public boolean equals(Card card)
+   {
+       if (this.getClass() == card.getClass())
+       {
+           return name.equals(card.getName());
+        }
+       else
+       {
+           return false;
+       }
+   }
 }

@@ -10,8 +10,23 @@ public class CallingCard extends Card
         this.pin = pin;
     }
     
+    public int getNum()
+    {
+        return num;
+    }
+    
+    public int getPin()
+    {
+        return pin;
+    }
+    
     public String format()
     {
         return "Card #: " + num + " PIN: " + pin;
+    }
+    
+    public boolean equals(CallingCard card)
+    {
+        return num == card.getNum() && pin == card.getPin();
     }
 }
