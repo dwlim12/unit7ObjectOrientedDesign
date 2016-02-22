@@ -19,11 +19,11 @@ public class TriangleFrame extends JFrame
             points.add(x);
             points.add(y);
             scene.addPoint();
-            if (scene.count == 1)
+            if (scene.count > 0)
             {scene.drawDot(x,y);}
-            if (scene.count == 2)
+            if (scene.count > 1)
             {scene.drawLine(points.get(0),points.get(1),x,y);}
-            if (scene.count == 3)
+            if (scene.count > 2)
             {scene.drawTriangle(points.get(0),points.get(1),points.get(2),points.get(3),x,y);}
         }
         public void mouseReleased(MouseEvent event) {}

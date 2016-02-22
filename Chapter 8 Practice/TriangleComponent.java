@@ -25,12 +25,12 @@ public class TriangleComponent extends JComponent
     public void paintComponent(Graphics g)
     {
         Graphics2D g2 = (Graphics2D) g;
-        if (this.count == 1)
+        if (this.count > 0)
         {g2.draw(dot);
          g2.fill(dot);}
-        if (this.count == 2)
+        if (this.count > 1)
         {g2.draw(line1);}
-        if (this.count == 3)
+        if (this.count > 2)
         {g2.draw(line2);
          g2.draw(line3);}
     }
