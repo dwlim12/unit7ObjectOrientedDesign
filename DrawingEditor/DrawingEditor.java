@@ -1,40 +1,29 @@
-
-
+import javax.swing.JFrame;
 /**
  * Write a description of class DrawingEditor here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class DrawingEditor
+public class DrawingEditor extends JFrame
 {
-    /** description of instance variable x (add comment for each instance variable) */
-    private int x;
-
-    /**
-     * Default constructor for objects of class DrawingEditor
-     */
+    DrawingPanel canvas;
+    ControlPanel controls;
+    JFrame frame;
     public DrawingEditor()
     {
-        // initialise instance variables
-        x = 0;
+        frame = new JFrame("Drawing Editor");
+        canvas = new DrawingPanel();
+        controls = new ControlPanel(canvas);
+        this.frame.add(controls.getPanel());
+        this.frame.setSize(600,400);
+        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame.setVisible(true);
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *    that describes the operation of the method
-     *
-     * @pre        preconditions for the method
-     *            (what the method assumes about the method's parameters and class's state)
-     * @post    postconditions for the method
-     *            (what the method guarantees upon completion)
-     * @param    y    description of parameter y
-     * @return    description of the return value
-     */
-    public int sampleMethod(int y)
+    
+    public static void main(String[] args)
     {
-        // put your code here
-        return x+y;
+        DrawingEditor editor = new DrawingEditor();
     }
 
 }
