@@ -15,21 +15,24 @@ public class ControlPanel extends JPanel
     private JButton button2;
     private JButton button3;
     private JPanel colorIndicator;
+    private DrawingPanel canvas;
     public ControlPanel(DrawingPanel canvas)
     {
         this.button1 = new JButton("Pick Color");
         this.button2 = new JButton("Add Circle");
         this.button3 = new JButton("Add Square");
         this.add(button1);
-        this.add(button2);
-        this.add(button3);
+        this.canvas = canvas;
         
         colorIndicator = new JPanel();
         colorIndicator.setBackground(Color.WHITE);
+        this.add(colorIndicator);
+        this.add(button2);
+        this.add(button3);
         
-        ActionListener listener1 = new ActionListener();
-        ActionListener listener2 = new ActionListener();
-        ActionListener listener3 = new ActionListener();
+        ClickListener listener1 = new ClickListener();
+        ClickListener listener2 = new ClickListener();
+        ClickListener listener3 = new ClickListener();
         this.button1.addActionListener(listener1);
         this.button2.addActionListener(listener2);
         this.button3.addActionListener(listener3);
@@ -39,15 +42,18 @@ public class ControlPanel extends JPanel
     {
         public void actionPerformed(ActionEvent event)
         {
-            if (event.getActionCommand().equals("Pick Color")
+            if (event.getActionCommand().equals("Pick Color"))
             {
-                
+                canvas.pickColor();
             }
-            else if (event.getActionCommand().equals("Add Circle")
+            else if (event.getActionCommand().equals("Add Circle"))
             {
-                
+                canvas.addCircle();
             }
-            else if (event.getActionCommand().equals("Add Square")
+            else if (event.getActionCommand().equals("Add Square"))
+            {
+                canvas.addSquare();
+            }
         }
     }
     
