@@ -16,16 +16,16 @@ public abstract class Shape
         
     }
     
-//     public abstract Point2D.Double getCenter()
+//     public Point2D.Double getCenter()
 //     {
 //     }
-//     public abstract double getRadius()
+//     public double getRadius()
 //     {
 //     }
-//     public abstract void move(double x, double y)
+//     public void move(double x, double y)
 //     {
 //     }
-//     public abstract void setRadius(double r)
+//     public void setRadius(double r)
 //     {
 //     }
     

@@ -25,7 +25,7 @@ public class ControlPanel extends JPanel
         this.canvas = canvas;
         
         colorIndicator = new JPanel();
-        colorIndicator.setBackground(Color.WHITE);
+        colorIndicator.setBackground(canvas.getColor());
         this.add(colorIndicator);
         this.add(button2);
         this.add(button3);

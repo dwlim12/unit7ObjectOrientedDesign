@@ -5,6 +5,10 @@ import javax.swing.JButton;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
@@ -17,14 +21,20 @@ import javax.swing.JColorChooser;
  */
 public class DrawingPanel extends JPanel
 {
-    JPanel panel;
     ArrayList<Shape> shapes;
+    Shape shape;
     Color color;
+    Color newColor;
+    JFrame frame;
+    JColorChooser colorChooser;
     public DrawingPanel()
     {
         this.setBackground(Color.WHITE);
+        this.color = Color.ORANGE;
+        this.newColor = Color.WHITE;
+        this.shapes = new ArrayList<Shape>();
     }
-    class MousePressListener implements MouseListener
+    public class MousePressListener implements MouseListener
     {
         public void mousePressed(MouseEvent event) {}
         public void mouseReleased(MouseEvent event) {}
@@ -32,10 +42,34 @@ public class DrawingPanel extends JPanel
         public void mouseEntered(MouseEvent event) {}
         public void mouseExited(MouseEvent event) {}
     }
-    class MouseMoveListener implements MouseMotionListener
+    public class MouseMoveListener implements MouseMotionListener
     {
         public void mouseDragged(MouseEvent event) {}
         public void mouseMoved(MouseEvent event) {}
+    }
+    public class ColorListener implements ChangeListener
+    {
+        public void stateChanged(ChangeEvent e)
+        {
+            newColor = colorChooser.getColor();
+            color = newColor;
+        }
+    }
+    public class ClickListener implements ActionListener
+    {
+        public void actionPerformed(ActionEvent event)
+        {
+            if (event.getActionCommand().equals("Select"))
+            {
+                color = newColor;
+                frame.setVisible(false);
+            }
+            else if (event.getActionCommand().equals("Cancel"))
+            {
+                color = color;
+                frame.setVisible(false);
+            }
+        }
     }
     
     public Color getColor()
@@ -46,12 +80,14 @@ public class DrawingPanel extends JPanel
     public void pickColor()
     {
         //sets and displays color chooser panel
-        JFrame frame = new JFrame("ColorChooserDemo");
+        frame = new JFrame("ColorChooserDemo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ColorListener colorlistener = new ColorListener();
         
-        JComponent newContentPane = new JColorChooser();
-        newContentPane.setOpaque(true);
-        frame.setContentPane(newContentPane);
+        colorChooser = new JColorChooser();
+        colorChooser.setOpaque(true);
+        colorChooser.getSelectionModel().addChangeListener(colorlistener);
+        frame.setContentPane(colorChooser);
         
         frame.pack();
         frame.setVisible(true);
@@ -60,11 +96,15 @@ public class DrawingPanel extends JPanel
         BorderLayout layout = new BorderLayout();
         frame.setLayout(layout);
         JPanel buttonPanel = new JPanel();
-        JButton button1 = new JButton("Ok");
+        JButton button1 = new JButton("Select");
         JButton button2 = new JButton("Cancel");
         buttonPanel.add(button1);
         buttonPanel.add(button2);
         frame.add(buttonPanel,BorderLayout.SOUTH);
+        ClickListener listener1 = new ClickListener();
+        ClickListener listener2 = new ClickListener();
+        button1.addActionListener(listener1);
+        button2.addActionListener(listener2);
     }
     
     public void addCircle()
