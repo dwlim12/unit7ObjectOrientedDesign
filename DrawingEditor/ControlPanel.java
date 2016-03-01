@@ -45,6 +45,7 @@ public class ControlPanel extends JPanel
             if (event.getActionCommand().equals("Pick Color"))
             {
                 canvas.pickColor();
+                colorIndicator.setBackground(canvas.getColor());
             }
             else if (event.getActionCommand().equals("Add Circle"))
             {

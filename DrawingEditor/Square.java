@@ -1,8 +1,17 @@
-//public class Square extends Shape
+import java.awt.geom.Point2D;
+import java.awt.Color;
+import java.awt.geom.Rectangle2D;
+public class Square extends Shape
 {
-    public Square()
+    private Rectangle2D square;
+    public Square(Point2D.Double center, double radius, Color color)
     {
-        // initialise instance variables
-        x = 0;
+        super(center,radius,color);
+    }
+    
+    public void draw(Graphics2D g2, boolean filled)
+    {
+        square = new Rectangle2D();
+        square.setRect(
     }
 }
