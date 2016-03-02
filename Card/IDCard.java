@@ -7,7 +7,6 @@ public class IDCard extends Card
    {
         super(n);
         idNumber = id;
-        name = n;
    }
     
    public String format()
