@@ -14,7 +14,7 @@ import javax.swing.JColorChooser;
 public class DrawingPanel extends JPanel
 {
     ArrayList<Shape> shapes;
-    Square square;
+    Shape activeShape;
     Color color;
     public DrawingPanel()
     {
@@ -66,13 +66,17 @@ public class DrawingPanel extends JPanel
     
     public void addSquare()
     {
-        //Point2D.Double center = new Point2D.Double(300,200);
-        //square = new Square(center,50,this.color);
+        Point2D.Double center = new Point2D.Double(200,100);
+        Square square = new Square(center,50,this.color);
+        shapes.add(square);
     }
-//     
-//     public void paintComponent(Graphics g)
-//     {
-//         Graphics2D g2 = (Graphics2D) g;
-//         square.draw(g2,true);
-//     }
+     
+    public void paintComponent(Graphics g)
+    {
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+        Point2D.Double center = new Point2D.Double(250,150);
+        Square square = new Square(center,50,this.color);
+        square.draw(g2, true);
+    }
 }

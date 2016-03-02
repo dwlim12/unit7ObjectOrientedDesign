@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 public abstract class Shape
 {
-    private Point2D center;
+    private Point2D.Double center;
     private double radius;
     private Color color;
     public Shape(Point2D.Double center, double radius, Color color)
@@ -14,14 +14,18 @@ public abstract class Shape
         this.color = color;
     }
     
-//      public Point2D.Double getCenter()
-//      {
-//          return this.center;
-//      }
-     public double getRadius()
-     {
-         return this.radius;
-     }
+    public Point2D.Double getCenter()
+    {
+        return this.center;
+    }
+    public double getRadius()
+    {
+        return this.radius;
+    }
+    public Color getColor()
+    {
+        return this.color;
+    }
 //     public void move(double x, double y)
 //     {
 //     }
