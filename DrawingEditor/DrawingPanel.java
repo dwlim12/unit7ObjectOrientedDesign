@@ -61,7 +61,9 @@ public class DrawingPanel extends JPanel
     
     public void addCircle()
     {
-        
+        Point2D.Double center = new Point2D.Double(200,100);
+        Circle circle = new Circle(center,50,this.color);
+        shapes.add(circle);
     }
     
     public void addSquare()
